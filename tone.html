@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.17/Tone.js" integrity="sha512-EIXtbmVz5SVaJkojf2cSv73z6rh3PKBHOdXVvHEUjHSYrIQd1RaaJnosglDSXuMaRxZr5rk6QdYGm2WcZX/U1Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://unpkg.com/@tonejs/ui@0.0.8/build/tonejs-ui.js"></script>
+
+  </head>
+  <tone-play-toggle></tone-play-toggle>
+  <button>
+    beep
+  </button>
+  <body>
+<script type="text/javascript">
+  //will play as soon as it's loaded
+// var player = new Tone.Player({
+// 	"url" : "01 Ephemeral U.mp3",
+// 	"autostart" : true,
+// // }).toMaster();
+//   // const player = new Tone.Player({
+// 	// 		url: "https://tonejs.github.io/audio/loop/FWDL.mp3",
+// 	// 		loop: true,
+// 	// 		loopStart: 0.5,
+// 	// 		loopEnd: 0.7,
+// 	// 	}).toDestination();
+//   //
+// 	// 	ui({
+// 	// 		tone: player,
+// 	// 		parent: document.querySelector("button")
+// 	// 	});
+//   //
+// 	// 	// bind the interface
+//     var whale;
+//     var player;
+//   // document.querySelector("button").addEventListener("click", () => player.start());
+//   var buffer = new Tone.Buffer("01 Ephemeral U.mp3", function(){
+//   	//the buffer is now available.
+//   	var buff = buffer.get();
+//     whale = new Tone.Player(buff).toMaster();
+//     player = new Tone.Player(buff).toMaster();
+//
+//     // sync the Players to the Transport like this
+//     player.sync().start(0);
+//     whale.sync().start(0);
+//
+//     whale.volume.value = -10;
+//     player.volume.value = 5;
+//
+//   });
+//
+//
+//
+// // button = createButton('Play Bird');
+// // button.position(20, 200);
+// // button.mousePressed(birdSwitch);
+//
+// // function birdSwitch() {
+// //     if (player.state == "started") {
+// //         // Use the Tone.Transport to pause audio
+// //         Tone.Transport.pause();
+// //     } else if (player.state == "stopped") {
+// //         // Use the Tone.Transport to start again
+// //         Tone.Transport.start();
+// //     }
+// // }
+//   document.querySelector("tone-play-toggle").addEventListener("play", (e) => {
+//
+//         const playing = e.detail;
+//
+//         if (playing){
+//            Tone.Transport.start();
+//         } else {
+//            Tone.Transport.pause();
+//         }
+//      });
+		// document.querySelector("button").addEventListener("start", () => player.start());
+		// document.querySelector("button").addEventListener("stop", () => player.stop());
+    //load a whole bank of piano samples
+    var pianoSamples = new Tone.Buffers({
+    	"C4" : "vm1.mp3",
+    	"C#4" : "vm2.mp3"
+    }, function(){
+    	//play one of the samples when they all load
+    	player.buffer = pianoSamples.get("C4");
+    	player.start();
+    });
+
+      document.querySelector("tone-play-toggle").addEventListener("play", (e) => {
+
+            const playing = e.detail;
+
+            if (playing){
+               Tone.Transport.start();
+            } else {
+               Tone.Transport.pause();
+            }
+         });
+</script>
+
+  </body>
+</html>

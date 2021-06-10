@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="glitch.js-master/dist/css/styles.css">
+    <script type="text/javascript" src="glitch.js-master/dist/js/styles.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.min.js"></script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/addons/p5.sound.min.js"></script>
+    <script type="text/javascript" src="voicemail.js"></script>
+    <style media="screen">
+    @font-face {
+          font-family: 'AUTHENTICSans';
+          src: url('AUTHENTIC-Sans.woff2') format('woff2'),
+          url('AUTHENTIC-Sans.woff') format('woff'),
+          url('AUTHENTIC-Sans.otf') format('otf')
+          }
+          body {
+          font-family: "AUTHENTICSans", "AUTHENTICSans-Regular", "Arial", sans-serif;
+          font-size: 42px;
+            }
+      html, body{
+        background-color:#8bc3c1;
+        /* background-color:#80bdbb; */
+        color: #D6FB38;
+      }
+
+      .glitch.back.noise{
+          height:1000px;
+          z-index: 0;
+      }
+      .logo{
+        position: absolute;
+      }
+      .thispart{
+        position: absolute;
+        top:0;
+        left:0;
+      }
+      .voicemail {
+        color: #D6FB38;
+        border-radius: 25px;
+        /* background: #E6E0E6; */
+        /* background: #D6FB38; */
+        /* background-image: linear-gradient(to bottom right, #045E78,#76D9D6 ); */
+        padding: 20px;
+        /* width: 200px;
+        height: 150px; */
+        z-index: 2;
+      }
+      #contentt{
+        bottom: 10%;
+
+      }
+      .vm1{
+        top:20%;
+        left:20%;
+        right:20%;
+        text-align: center;
+      }
+      .vm2{
+        top:50%;
+        left:20%;
+        right:20%;
+        font-size:18px;
+      }
+      .vm3{
+        top:70%;
+        left: 20%;
+        right:20%;
+      }
+      .content{
+        position:absolute;
+        top: 20%;
+        left: 20%;
+        right:20%;
+      }
+      #content{
+        overflow-y:scroll;
+      }
+      svg{
+        position: fixed
+      }
+      .canvasParent{
+        position: absolute;
+        top:0;
+        margin:0;
+        left:0;
+        z-index: -3;
+      }
+      #xmark{
+        position:absolute;
+        top:0;
+        right:0;
+        padding: 8px;
+        background-color: #D6FB38;
+      }
+      .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #D6FB38;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
+
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
+
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      #main {
+        transition: margin-left .5s;
+        padding: 16px;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
+      /* Place the navbar at the bottom of the page, and make it stick */
+      .navbar {
+        /* background-color: #333; */
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align:center;
+        z-index: 1;
+      }
+
+      /* Style the links inside the navigation bar */
+      .navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      /* Change the color of links on hover */
+      .navbar a:hover {
+        /* background-color: #ddd; */
+        color: black;
+      }
+
+      /* Add a color to the active/current link */
+      .navbar a.active {
+        /* background-color: #04AA6D; */
+        color: white;
+      }
+      .navbar button {
+        background-color: grey;
+        border-radius: 25px;
+        font-size: 20px;
+        color: white;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#">&#10175; voicemail 1</a>
+      <a href="#">&#10175; voicemail 2 </a>
+      <a href="#">&#10175; voicemail 3</a>
+      <a href="#">&#10175; voicemail 4</a>
+    </div>
+    <div id="main">
+    <div class="logo">
+      <img style="height:150px;" src="1-8888-GLITCH.png" alt="">
+
+
+
+    </div>
+    <div class="navbar">
+      <button id="aboutButton" type="button" name="button">About</button>
+      <button id="voicemailButton" onclick="openNav()" type="button" name="button">Voicemails</button>
+      <button id="filmButton" type="button" name="button">Film Submissions</button>
+      <button id="termsButton" type="button" name="button">Terms & Conditions</button>
+    </div>
+
+    <div class="content" id="contentt">
+      <!-- <div class="glitch back noise">
+        <div class="voicemail vm1" id="content">
+        </div>
+      </div> -->
+    </div >
+    <div id="canvasParent">
+
+    </div>
+ <!-- <div class="content">
+    <div class="voicemail vm1">
+      1-8888-GLITCH is an interactive voicemail-to-film platform. Call the toll-free number and leave a message
+      <br><br>
+      Collaborative media platform
+      <br>
+      Call-and-response <br>
+      Run from Toronto, but open to anyone. <br>
+      <br>
+      <i>
+        How it works: <br>
+        Call <br>
+        Listen & Watch <br>
+        Create A Film <br>
+      </i>
+      Tba– a livestream of the video archive glitched and manipulated.
+
+    </div>
+<br><br><br>
+    <div class="voicemail vm2">
+      <b>Film Submissions</b>
+      <br><br>
+      Using a voicemail message from the archive, create a two minute film that prioritizes the act of listening. Avoid repeatedly playing the message and try creating from intuition, using any camera available to you. The intent is for instinctual and spontaneous filmmaking without “overthinking.” The response could be anything from narrative, experimental, video portraits, animation, landscapes, or simply listening to it for the first time in front of your webcam. No experience required.
+      <br><br>
+      The audio should only be the raw voicemail file, available for download. Your film can be edited using any film editing software, app, or website. There are many free intuitive options out there. If you’re experiencing issues or require assistance, contact us at 18888glitch@gmail.com
+      <br><br>
+      All entries that follow the guidelines will be accepted and uploaded to the website within 48 hours. Submit your film using this form.
+      <br><br>
+      Website - TOLL FREE <br>
+       speak of the impression they left on you.
+    </div>
+<br><br>
+    <div class="voicemail vm3" style="font-size:12px">
+      <b>Terms and Conditions</b>
+      <br><br><br>
+      By participating, you grant a non-exclusive license to 1-8888-GLITCH for any voicemails and short films that are created for the project. There is no monetary
+      <br><br>
+      By leaving a message and/or submitting a film, you grant permission to 1-8888-GLITCH, the rights of your contribution of a voice message and/or film, in video, sound, or still, and of the likeness and sound of your voice as recorded through the toll free number, 1-8888-GLITCH.
+      <br><br>
+      Understand that image and sound may be edited, copied, exhibited, published, or distributed and waive the right to inspect or approve the finished product wherein a participant(s) likeness appears. Additionally, the participant waives any right to royalties or other compensation arising or related to the use of the image or recording. These audio, video, and digital inclusions are included but not limited to being featured on YouTube, Vimeo, Instagram, TikTok, and Twitter.
+      <br><br>
+      Photographic, audio or video recordings may be used for ANY purpose which may include but it not limited to:
+      Presentations
+      online/internet videos
+      Media
+      News (press)
+    </div>
+    <br><br>
+  </div> -->
+    <div class="thispart">
+        <svg width="100px" height="100vh">
+          <defs>
+            <filter id="distort">
+              <feTurbulence baseFrequency=".01 0.07" type="turbulence"/>
+              <feColorMatrix type="hueRotate" values="360"> <animate attributeName="values" from="40" to="360" dur="2s" repeatCount="indefinite"/> </feColorMatrix>
+              <feConvolveMatrix order="3" kernelMatrix="0 0 0 0 1 0 0 0 0"/>
+              <feDisplacementMap in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="20"> <animate attributeName="scale" values="30;20;50;30" dur="5s" repeatCount="indefinite"/> </feDisplacementMap>
+              <feGaussianBlur stdDeviation="3"/>
+              <feComponentTransfer result="main"> <feFuncA type="gamma" amplitude="50" exponent="5"/> </feComponentTransfer>
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+              <feGaussianBlur stdDeviation="10"/>
+              <feComposite operator="over" in="main"/>
+              <feConvolveMatrix order="3 3" kernelMatrix="-3 0 0 0 -3 0 0 0 4" divisor="1" bias="1" targetX="0" targetY="0" edgeMode="duplicate" preserveAlpha="true" x="0%" y="0%" width="100%" height="100%" in="componentTransfer" result="convolveMatrix"/>
+            </filter>
+          </defs>
+        <path filter="url(#distort)" d="M99.236,-12.065 C99.236,18.913 8,58 24,75 40,90 -5.321,1007.945 25.691,1007.945 " fill="none" stroke="#0999e6" stroke-width="5"/>
+<!-- #92e22e #fc7b03-->
+        </svg>
+    </div>
+  </div>
+    <script type="text/javascript">
+    const aboutContent = "<div class=\"glitch back noise\"> <div class=\"voicemail vm1\" id=\"content\" style=\"overflow-y:scroll;\"><button id=\"xmark\"> x </button>1-8888-GLITCH is an interactive voicemail-to-film platform. Call the toll-free number and leave a message <br><br> Collaborative media platform <br> Call-and-response <br> Run from Toronto, but open to anyone. <br> <br> <i> How it works: <br> Call <br> Listen & Watch <br> Create A Film <br> </i> Tba– a livestream of the video archive glitched and manipulated.</div></div>";
+    const filmContent = "<div class=\"glitch back noise\"> <div class=\"voicemail vm1\" id=\"content\"><button id=\"xmark\"> x </button><b>Film Submissions</b> <br><br> Using a voicemail message from the archive, create a two minute film that prioritizes the act of listening. Avoid repeatedly playing the message and try creating from intuition, using any camera available to you. The intent is for instinctual and spontaneous filmmaking without “overthinking.” The response could be anything from narrative, experimental, video portraits, animation, landscapes, or simply listening to it for the first time in front of your webcam. No experience required. <br><br> The audio should only be the raw voicemail file, available for download. Your film can be edited using any film editing software, app, or website. There are many free intuitive options out there. If you’re experiencing issues or require assistance, contact us at 18888glitch@gmail.com <br><br> All entries that follow the guidelines will be accepted and uploaded to the website within 48 hours. Submit your film using this form. <br><br> Website - TOLL FREE <br> speak of the impression they left on you.</div></div>";
+    const termsContent= " <div class=\"glitch back noise\"> <div class=\"voicemail vm1\" id=\"content\"><button id=\"xmark\"> x </button><b>Terms and Conditions</b> <br><br><br> By participating, you grant a non-exclusive license to 1-8888-GLITCH for any voicemails and short films that are created for the project. There is no monetary <br><br> By leaving a message and/or submitting a film, you grant permission to 1-8888-GLITCH, the rights of your contribution of a voice message and/or film, in video, sound, or still, and of the likeness and sound of your voice as recorded through the toll free number, 1-8888-GLITCH. <br><br> Understand that image and sound may be edited, copied, exhibited, published, or distributed and waive the right to inspect or approve the finished product wherein a participant(s) likeness appears. Additionally, the participant waives any right to royalties or other compensation arising or related to the use of the image or recording. These audio, video, and digital inclusions are included but not limited to being featured on YouTube, Vimeo, Instagram, TikTok, and Twitter. <br><br> Photographic, audio or video recordings may be used for ANY purpose which may include but it not limited to: Presentations online/internet videos Media News (press)</div></div>";
+
+    document.getElementById("aboutButton").addEventListener("click", function(){document.getElementById("contentt").innerHTML = aboutContent;zfunc();}, false)
+    document.getElementById("filmButton").addEventListener("click", function(){document.getElementById("contentt").innerHTML =filmContent;zfunc();}, false)
+    document.getElementById("termsButton").addEventListener("click", function(){document.getElementById("contentt").innerHTML =termsContent;zfunc();}, false)
+    document.getElementById("voicemailButton").addEventListener("click", function(){document.getElementById("contentt").innerHTML =""}, false)
+    function zfunc(){
+          document.getElementById("xmark").addEventListener("click", function(){document.getElementById("contentt").innerHTML ="";}, false)
+    }
+
+    </script>
+    <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+      // document.body.style.backgroundColor = "white";
+    }
+    </script>
+  </body>
+</html>

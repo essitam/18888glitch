@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.6.0/pixi.min.js" integrity="sha512-Xuxi4TLy7zjGnoAuv99f76gpcqxIU0qEG97hW0H0POT8fLT+IosrI8eB0++zB/VMPzQDrO+gHhXxwc0to7V6Tw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/PixiPlugin.min.js"></script>
+    <style media="screen">
+      svg{
+        /* margin-left: 35%; */
+
+      }
+      div{
+          background-color: 'blue';
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+    <svg class="mysvg" width="100vw" height="100vh">
+        <defs>
+            <filter id="turb">
+                <feTurbulence id="turbwave" type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="4"  result="turbulence_3" data-filterId="3" />
+                <!-- <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="turbulence_3" scale="40" /> -->
+                <!-- <feTurbulence baseFrequency=".01 0.07" type="turbulence"/> -->
+                <feColorMatrix type="hueRotate" values="360">
+                  <!-- <animate attributeName="values" from="0" to="360" dur="2s" repeatCount="indefinite"/> -->
+                </feColorMatrix>
+                <feConvolveMatrix order="3" kernelMatrix="0 0 0 0 1 0 0 0 0"/>
+                <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="turbulence_3" scale="40" />
+                <feGaussianBlur stdDeviation="3"/>
+                <feComponentTransfer result="main">
+                  <feFuncA type="gamma" amplitude="50" exponent="5"/>
+                </feComponentTransfer>
+                <feColorMatrix type="matrix" values="0 0 0 0 0
+                                                     0 0 0 0 0
+                                                     0 0 0 0 0
+                                                     0 0 0 1 0"/>
+                <feGaussianBlur stdDeviation="10"/>
+                <feComposite operator="over" in="main"/>
+                <!-- <feConvolveMatrix order="3 3" kernelMatrix="-3 0 0
+              0 -3 0
+              0 0 4" divisor="1" bias="1" targetX="0" targetY="0" edgeMode="duplicate" preserveAlpha="true" x="0%" y="0%" width="100%" height="100%" in="componentTransfer" result="convolveMatrix"/> -->
+              	<!-- <feComponentTransfer x="0%" y="0%" width="100%" height="100%" in="convolveMatrix" result="componentTransfer2">
+                  <feFuncR type="table" tableValues="0 1 1"/>
+              		<feFuncG type="table" tableValues="0 1 0"/>
+              		<feFuncB type="table" tableValues="1 0 1"/>
+              		<feFuncA type="table" tableValues="0 1"/>
+                	</feComponentTransfer> -->
+            </filter>
+        </defs>
+        <path filter="url(#turb)" d="M0,0 C0,31 56.427,362.347 72.436,379.359 80.424,386.854 142.22,630.932 362.855,670.898 451.1022,686.8764 661.615,823.556 756.309,788.83 898.333,736.734 912.1902,500.011 921.492,500.011 " fill="none" stroke="#6d1dd1" stroke-width="5"/>
+
+        <!-- <image id="img" x="0" y="0" width="500" height="500" xlink:href="screenshot.png" filter="url(#turb)" /> -->
+    </svg>
+    </div>
+    <script type="text/javascript">
+      gsap.to("#turbwave" , 10, {
+        attr:{"baseFrequency":".01 0.07"},
+        repeat:-1,
+        yoyo:true
+      });
+    </script>
+  </body>
+</html>

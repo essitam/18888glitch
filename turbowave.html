@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.6.0/pixi.min.js" integrity="sha512-Xuxi4TLy7zjGnoAuv99f76gpcqxIU0qEG97hW0H0POT8fLT+IosrI8eB0++zB/VMPzQDrO+gHhXxwc0to7V6Tw==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/PixiPlugin.min.js"></script>
+    <style media="screen">
+      html, body{
+        background-color: #D6FB38;
+      }
+      .glitch.back.noise{
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+      }
+      .logo{
+        position: absolute;
+        right:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo">
+      <img style="height:150px;" src="18888.png" alt="">
+    </div>
+    <div id="box">
+    <svg class="mysvg" width="100vw" height="100vh">
+        <defs>
+            <filter id="turb">
+                <feTurbulence id="turbwave" type="fractalNoise" baseFrequency="0.03" numOctaves="2"  result="turbulence_3" data-filterId="3" />
+                   <feDisplacementMap xChannelSelector="R" yChannelSelector="G" in="SourceGraphic" in2="turbulence_3" scale="40" />
+
+            </filter>
+        </defs>
+        <path filter="url(#turb)" d="M0,0 C0,31 56.427,362.347 72.436,379.359 80.424,386.854 142.22,630.932 362.855,670.898 451.1022,686.8764 661.615,823.556 756.309,788.83 898.333,736.734 912.1902,500.011 921.492,500.011 " fill="#6d1dd1" stroke="#6d1dd1" stroke-width="25"/>
+    </svg>
+    </div>
+    <script type="text/javascript">
+      gsap.to("#turbwave" , 10, {
+        attr:{"baseFrequency":".01 0.07"},
+        repeat:-1,
+        yoyo:true
+      });
+    </script>
+  </body>
+</html>

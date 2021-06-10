@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+<style>
+  @font-face {
+        font-family: 'AUTHENTICSans';
+        src: url('AUTHENTIC-Sans.woff2') format('woff2'),
+        url('AUTHENTIC-Sans.woff') format('woff'),
+        url('AUTHENTIC-Sans.otf') format('otf')
+        }
+        body {
+        font-family: "AUTHENTICSans", "AUTHENTICSans-Regular", "Arial", sans-serif;
+/* body {
+  font-family: "Lato", sans-serif; */
+}
+html, body{
+  background-image: linear-gradient( #D1BDD7,#C4F7D8, #22AC2B, black);
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  /* background-color: #E6E0E6; */
+  color:#c2fc03;
+
+}
+.sidenav {
+  height: 100%;
+  width: 10%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #a69ed9;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #c2fc03;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.glitch{
+  text-align: right;
+  font-size: 73px;
+}
+</style>
+</head>
+<body>
+<div class="glitch">
+  1-8888-glitch
+</div>
+<div class="sidenav">
+  <a href="#">&#10175; voicemail 1</a>
+  <a href="#">&#10175; voicemail 2 </a>
+  <a href="#">&#10175; voicemail 3</a>
+  <a href="#">&#10175; voicemail 4</a>
+</div>
+
+<div class="main">
+main content here
+</div>
+<script type="text/javascript">
+  function setup() {
+    createCanvas(windowWidth, windowHeight);
+    strokeWeight(3);
+    //center squares to match circles
+    rectMode(CENTER);
+
+    //draw rects to mark far sides
+    noStroke();
+    fill("beige");
+    rect(5, height / 2, 10, height);
+    rect(width - 5, height / 2, 10, height);
+    fill(156, 227, 209);
+    stroke(156, 227, 209);
+
+  }
+
+  function draw() {
+    point(mouseX, mouseY);
+    // line(mouseX*random(), mouseY*random(), mouseY*random(), mouseX*random());
+
+    //if (test) {doThis; }
+    //test: mouseX on far left of canvas
+    //doThis: draw a circle at mouseY
+    if (mouseX < 10) {
+      circle(width / 2, mouseY, 20);
+    }
+
+    //test: mouseX on far right of canvas
+    //doThis: draw a square at mouseY
+    if (mouseX > width - 10) {
+      square(width / 2, mouseY, 20);
+    }
+
+  }
+</script>
+
+</body>
+</html>

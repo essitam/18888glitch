@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.js" ></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      let voices = [];
+      let voiceCount = 0;
+
+      function preload(){
+      for (let i = 0; i < 2; i++){
+      voices[i] = loadSound ('vm' + String(i) + '.mp3');
+        }
+      }
+
+
+      function setup() {
+          getAudioContext().suspend();
+        createCanvas(windowWidth, windowHeight, WEBGL);
+        voices[1].play();
+      }
+
+      function draw() {
+        background(0);
+      for (let i = 0; i < 200; i += 20) {
+        bezier(
+          mouseX - i / 2.0,
+          40 + i,
+          410,
+          20,
+          440,
+          300,
+          240 - i / 16.0,
+          300 + i / 8.0
+        );
+      }
+      }
+
+      function mouseClicked(){
+        random(voices).play()
+        random(voices).play()
+      }
+
+function mousePressed() {
+  userStartAudio();
+}
+    </script>
+
+  </body>
+</html>

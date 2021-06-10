@@ -1,0 +1,68 @@
+$bk: rgb(10,10,10);
+$bkT: rgba(10,10,10,0);
+
+$dg: rgb(50,50,50);
+$dgT: rgba(50,50,50,0);
+
+$g: rgb(70,70,70);
+$gT: rgba(70,70,70,0);
+
+$lg: rgb(120,120,120);
+$lgT: rgba(120,120,120,0);
+
+$bl: rgb(20,20,120);
+$blT: rgba(20,20,120,0);
+
+$p: rgb(25,20,25);
+$pT: rgba(25,20,25,0);
+// html, body{
+//   background-color: red;
+// }
+.iphone {
+  background:
+    /* camera */
+    // radial-gradient(1em 1em at 6.25em 2.5em, $bl 0.2em, $g 0.21em, $g 49%, $gT 50%),
+    /* speaker */
+    // radial-gradient(200% 100% at 100% 50%, $g 49%, $gT 50%) calc(50% + 0.125em - 2em - 0.25em) 2em / 0.5em 1em,
+    // radial-gradient(200% 100% at 0% 50%, $g 49%, $gT 50%) calc(50% + 0.125em + 2em + 0.25em) 2em / 0.5em 1em,
+    // linear-gradient($g, $g) calc(50% + 0.125em) 2em / 4em 1em,
+    // linear-gradient($p, $p) 50% 50% / 50% 50%,
+
+    // linear-gradient(60deg,$bl 42%, $blT 73%) 50% 50% / 80% 80%,
+    // /* screen */
+    // linear-gradient($p, $p) calc(50% + 0.125em) 5em / 17.25em 30em,
+    /* home button */
+    radial-gradient(200% 200% at 100% 100%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 0 25% / 2em 2em,
+    radial-gradient(200% 200% at 0% 100%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 18em 0 / 2em 2em,
+    radial-gradient(200% 200% at 100% 0%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 0.25em 38em / 2em 2em,
+    radial-gradient(200% 200% at 0% 0%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 18em 38em / 2em 2em,
+    linear-gradient($lg 2em, $dg 2em, $dg 98%, $lg 98%) 50% 50% / 80% 80%,
+    // linear-gradient(90deg, $lg 2em, $dg 2em, $dg 98%, $lg 98%) 50% 50% / 85% 70%;
+
+    // radial-gradient(200% 200% at 100% 100%, $lgT 0.3em, $lg 0.35em, $lg 0.48em, $lgT 0.5em) calc(50% + 0.125em - 0.5em) 36.5em / 0.5em 0.5em,
+    // radial-gradient(200% 200% at 0% 100%, $lgT 0.3em, $lg 0.35em, $lg 0.48em, $lgT 0.5em) calc(50% + 0.125em + 0.5em) 36.5em / 0.5em 0.5em,
+    // radial-gradient(200% 200% at 100% 0%, $lgT 0.3em, $lg 0.35em, $lg 0.48em, $lgT 0.5em) calc(50% + 0.125em - 0.5em) 37.5em / 0.5em 0.5em,
+    // radial-gradient(200% 200% at 0% 0%, $lgT 0.3em, $lg 0.35em, $lg 0.48em, $lgT 0.5em) calc(50% + 0.125em + 0.5em) 37.5em / 0.5em 0.5em,
+
+    // linear-gradient($lg 0.15em, $lgT 0.2em, $lgT 1.35em, $lg 1.35em) calc(50% + 0.125em) 36.5em / 0.5em 1.5em,
+    // linear-gradient(90deg,$lg 0.15em, $lgT 0.2em, $lgT 1.3em, $lg 1.35em) calc(50% + 0.125em) 37em / 1.5em 0.5em,
+    // radial-gradient(3em 3em at calc(50% + 0.125em) 37.25em, $bkT 1.25em, $bk 1.3em, $bk 49%, $bkT 50%),
+    // /* volume buttons */
+    // linear-gradient($lgT 5em, $lg 5em, $lg 7.5em, $lgT 7.5em, $lgT 9.5em, $lg 9.5em, $lg 11em, $lgT 11em, $lgT 13em, $lg 13em, $lg 14.5em, $lgT 14.5em) 0 0 / 0.3em 100%,
+    /* corners */
+    // radial-gradient(200% 200% at 100% 100%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 0.25em 0 / 2em 2em,
+    // radial-gradient(200% 200% at 0% 100%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 18em 0 / 2em 2em,
+    // radial-gradient(200% 200% at 100% 0%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 0.25em 38em / 2em 2em,
+    // radial-gradient(200% 200% at 0% 0%, $dg 1.45em, $lg 1.5em, $lg 50%, $lgT 51%) 18em 38em / 2em 2em,
+    // /* body */
+    // linear-gradient($lg 0.5em, $dg 0.55em, $dg 80%, $lg 90%) 2.25em 0 / 15.75em 40em,
+    // linear-gradient(90deg, $lg 0.5em, $dg 0.55em, $dg 19.175em, $lg 19.25em) 0.25em 2em / 19.75em 36em
+    ;
+
+  background-repeat: no-repeat;
+  font-size: 10px;
+  //outline: 1px solid #aaa;
+  width: 80vw;
+  height: 80vh;
+  border: solid;
+}
