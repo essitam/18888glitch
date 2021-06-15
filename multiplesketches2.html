@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.min.js"></script>
+    <script language="javascript" src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/addons/p5.sound.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.glitch@latest/p5.glitch.js"></script>
+
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+      // save this file as sketch.js
+      // Sketch One
+      var s = function( p ) { // p could be any variable name
+      let glitch, typeCounter = 0;
+         p.setup = function() {
+         p.createCanvas(600, 200);
+         p.imageMode(p.CENTER);
+         glitch = new Glitch();
+         p.setupGlitch(); // load image w/ random type
+       };
+
+       p.draw = function() {
+          glitch.resetBytes();
+
+         	glitch.randomBytes(1); // add one random byte for movement
+
+         	glitch.buildImage(function() {
+         		p.background(0); // clear background once image is ready
+         		p.displayType(); // show text
+         	});
+         	p.image(glitch.image, width / 2, height / 2)
+       };
+       p.mousePressed = function(){
+         typeCounter++;
+         p.setupGlitch(); // grab another random format
+       };
+
+       p.setupGlitch = function(){
+         p.loadImage('logo-600.png', function(im) {
+           glitch.loadType(glitch.types[typeCounter%glitch.types.length]); // use random type
+           glitch.loadImage(im);
+         });
+       };
+      };
+      var myp5 = new p5(s, 'c1');
+
+      // Sketch Two
+      var t = function( p ) {
+       var x = 100.0;
+       var y = 100;
+       var speed = 2.5;
+       p.setup = function() {
+         p.createCanvas(400, 200);
+       };
+
+       p.draw = function() {
+         p.background(100);
+         p.fill(1);
+         x += speed;
+         if(x > p.width){
+           x = 0;
+         }
+         p.ellipse(x,y,50,50);
+
+       };
+      };
+      var myp5 = new p5(t, 'c2');
+    </script>
+
+
+  </body>
+</html>

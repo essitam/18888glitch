@@ -15,7 +15,7 @@
     let glitch;
       // let fr = 3;
       let song, analyzer;
-      // let ee=127;
+      let ee=127;
       // function preload() {
       //   song = loadSound('01 Ephemeral U.mp3');
       // }
@@ -27,21 +27,21 @@
         	imageMode(CENTER);
 
         	glitch = new Glitch();
-        	loadImage('image1.png', function(im){
+        	loadImage('logo-600.png', function(im){
         		glitch.loadImage(im);
         	});
-          // // create a new Amplitude analyzer
+          // create a new Amplitude analyzer
           // analyzer = new p5.Amplitude();
           //
           // // Patch the input to an volume analyzer
           // analyzer.setInput(song);
           // song.loop();
       }
-      function draw()    {
+      function draw() {
         // frameRate(fr);
         glitch.resetBytes();
 
-      	glitch.replaceBytes(100, 127); // swap all decimal byte 100 for 104
+      	glitch.replaceBytes(100, ee); // swap all decimal byte 100 for 104
       	glitch.randomBytes(1); // add one random byte for movement
 
       	glitch.buildImage();
@@ -54,15 +54,15 @@
         // let rms = analyzer.getLevel();
         // console.log(rms);
         function canvasPressed() {
-          // ensure audio is enabled
+        //   // ensure audio is enabled
           userStartAudio();
-
-          // if (soundLoop.isPlaying) {
-          //   soundLoop.stop();
-          // } else {
-            // start the loop
-           song.play();
-          // }
+        //
+        //   // if (soundLoop.isPlaying) {
+        //   //   soundLoop.stop();
+        //   // } else {
+        //     // start the loop
+        //    song.play();
+        //   // }
         }
     </script>
 
