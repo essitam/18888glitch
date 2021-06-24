@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Infinite Scrolling Cards with GSAP and ScrollTrigger (continuous snap)</title>
+  <link rel="stylesheet" href="css/scroller.css">
+<style media="screen">
+/* iframe{
+  width:100%;
+  height:100vh;
+} */
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="gallery">
+	<ul id="card" class="cards">
+	</ul>
+	<div class="actions">
+		<button class="prev">Prev</button>
+		<button class="next">Next</button>
+	</div>
+</div>
+<!-- <div id="heo">
+
+</div> -->
+<script type="text/javascript">
+  var voicemailArray = ["qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8"];
+  var audioFile = "01 Ephemeral U.mp3";
+  function beginThePage(voicemailArray, audioFile){
+    var voicemail = voicemailArray;
+    let fLen = voicemail.length;
+    var cardi = document.getElementById('card');
+    for (let i = 0; i < fLen; i++) {
+      var li = document.createElement("li");
+      var p = document.createElement("p");
+      var img = document.createElement("img");
+      img.setAttribute('data-video', voicemail[i] );
+      img.setAttribute('alt', 'Play this video');
+      img.setAttribute('src', 'http://img.youtube.com/vi/'+ voicemail[i] +'/0.jpg')
+      p.appendChild(img);
+      li.appendChild(p);
+      cardi.appendChild(li);
+    }
+      var lii = document.createElement("li");
+      var aaa = document.createElement("a");
+      aaa.setAttribute('href', audioFile);
+      aaa.setAttribute('download', 'download');
+      aaa.innerText="download this audio file";
+      lii.appendChild(aaa);
+      cardi.appendChild(lii);
+
+      var liii = document.createElement("li");
+      liii.innerHTML = "submit";
+      cardi.appendChild(liii);
+
+  }
+
+  beginThePage(voicemailArray, audioFile);
+
+
+</script>
+
+<!-- partial -->
+<script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+<script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+<script  src="js/scroller.js"></script>
+<script type="text/javascript" src="js/ytfs.js"></script>
+</body>
+</html>

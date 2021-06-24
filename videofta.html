@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <body>
+
+  <a href="#" id="close-video"><i class="fa fa-custom-times"></i></a>
+<div id="visual">
+<div class="video item visible " id="img1" style="background-image: url(https://fta.ca/wp-content/uploads/2020/02/01_Aleppo_©_Pierre-Yves-Massot_005-1920x452.jpg);">
+                      <a href="https://www.youtube.com/watch?v=4wpYLGSepUU" id="play-btn" alt="Play the teaser"><div class="overlay"></div><i class="fa fa-custom-play"></i><div class="loading"><div class="sp sp-circle"></div></div></a>
+      <div class="videoWrapper-container">
+                                  <div class="videoWrapper show-small ">
+              <!-- <a rel="s-thumb" title="" class="fancybox-media video" href="https://www.youtube.com/watch?v=4wpYLGSepUU" alt="Play the teaser" style="background-image: url(https://fta.ca/wp-content/uploads/2020/02/01_Aleppo_©_Pierre-Yves-Massot_005-1920x452.jpg);"><i class="fa fa-custom-play"></i></a> -->
+          </div>
+          <div class="videoWrapper hide-small ">
+              <div id="ytapiplayer" data-yt="4wpYLGSepUU">
+                  You need Flash player 8+ and JavaScript enabled to view this video.
+              </div>
+              <script type="text/javascript">
+                  var msie = document.documentMode;
+                  var isiPad = navigator.userAgent.match(/iPad/i) != null;
+                  var tag = document.createElement('script');
+
+                  tag.src = "https://www.youtube.com/iframe_api";
+                  var firstScriptTag = document.getElementsByTagName('script')[0];
+                  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                  if(msie != 9 && msie != 10 && !isiPad) { //Not IE9 or 10
+                      var player;
+                      window.onYouTubeIframeAPIReady = function(){
+                          player = new YT.Player('ytapiplayer', {
+                              height: '720',
+                              width: '1280',
+                              playerVars: { 'rel': 0, 'enablejsapi': 1},
+                              videoId: '4wpYLGSepUU',
+                              events: {
+                                  'onReady': onPlayerReady,
+                                  'onStateChange': onPlayerStateChange
+                              }
+                          });
+                      }
+                  }
+                  function onPlayerReady(event) {
+                      // console.log('player-ready');
+                      $("#play-btn").addClass("ready-state");
+                      $("body").on("click", "#close-video", function (e) {
+                          e.preventDefault();
+                          event.target.stopVideo();
+                      });
+                      $("body").on("click", "#play-btn", function (e) {
+                          e.preventDefault();
+                          $(this).removeClass("ready-state").addClass("loading-state");
+                          event.target.playVideo();
+                      });
+                      $(document).keyup(function (e) {
+                          if (e.keyCode == 27) {
+                              event.target.stopVideo();
+                          }
+                      });
+
+                  }
+                  function onPlayerStateChange(event) {
+
+                      //console.log('new-state: ' + event.data);
+
+                      var screenW = $(window).outerWidth();
+                      var maxVideoHeight = screenW / 1.777777777778,
+                          headerHeight = $("header").height();
+
+                      if (screenW > 960) { //dont animate on mobile
+                          if (event.data == 1) { //Movie playing
+                              if (window.pageYOffset == 0) { //Bring to top before video animation
+                                  $("#visual").css({height: maxVideoHeight - 100});
+                                  $("body").addClass("video-on");
+                                  $("#play-btn").removeClass("loading-state");
+                                  setTimeout(function () {window.sideOffset = ($('#side-limit-container').offset().top)}, 500);
+                              } else {
+                                  $("html,body").animate({scrollTop: 0}, 200, "easeOutQuad", function () {
+                                      setTimeout(function () {
+                                          $("#visual").css({height: maxVideoHeight});
+                                          $("body").addClass("video-on");
+                                          $("#play-btn").removeClass("loading-state");
+                                          setTimeout(function () {window.sideOffset = ($('#side-limit-container').offset().top)}, 500);
+                                      }, 500);
+                                  });
+                              }
+                          }
+                          if (event.data == 0 || event.data == 5) { //End of movie
+                              $("#visual").css({height: 438});
+                              $("body").removeClass("video-on");
+                              $("#play-btn").addClass("ready-state");
+                              setTimeout(function () {window.sideOffset = window.cacheSideOffset}, 500);
+                          }
+                      } else {
+                          if (event.data == 1) {
+                              $("body").addClass("video-on");
+                              $("#play-btn").removeClass("loading-state");
+                          }
+                          if (event.data == 0 || event.data == 2 || event.data == 5) { //End of movie
+                              $("body").removeClass("video-on");
+                              $("#play-btn").addClass("ready-state");
+                          }
+                      }
+                  }
+
+              </script>
+          </div>
+      </div>
+    </div>
+</div>
+  </body>
+</html>

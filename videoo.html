@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      iframe{
+        width:50%;
+        height:100vh;
+      }
+      #hi{
+        color:green;
+      }
+    </style>
+  </head>
+  <body>
+    <p><img data-video="qhVehcHwOB8" alt="Play this video" src="http://img.youtube.com/vi/qhVehcHwOB8/0.jpg"></p>
+    <script type="text/javascript">
+      // Listen for clicks
+
+      document.addEventListener('click', function (event) {
+
+      	// Check if clicked element is a video thumbnail
+      	var videoId = event.target.getAttribute('data-video');
+        if(!videoId) {console.log('li')}
+      	if (!videoId) return;
+        if (videoId){
+      	// Create iframe
+      	var iframe = document.createElement('div');
+      	iframe.innerHTML = '<p>x</p><div class="fluid-vids"><p id="hi" data-info="'+ videoId+'" onclick="assign()">X</p><iframe src="https://www.youtube.com/embed/' + videoId + '?rel=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+      	var video = iframe.childNodes[1];
+                // Replace the image with the video
+        event.target.parentNode.replaceChild(video, event.target);
+
+        // Enter fullscreen mode
+        video.requestFullscreen();
+      }
+
+
+      }, false);
+  var ul;
+      function assign(){
+        console.log('ekekek');
+       ul = getElementById('hi');
+      }
+
+      document.addEventListener('click', function (event) {
+
+        // Check if clicked element is a video thumbnail
+        var videoId = event.target.getAttribute('data-info');
+        if(!videoId) {console.log('ki')}
+        if (!videoId) return;
+        if (videoId){
+        // Create iframe
+        var iframe = document.createElement('div');
+        iframe.innerHTML = '<img data-video="'+videoId+'" alt="Play this video" src="http://img.youtube.com/vi/'+videoId+'/0.jpg">'
+        // iframe.innerHTML = '<p>x</p><div class="fluid-vids"><p id="hi" data-info="'+ videoId+'" onclick="assign()">X</p><iframe src="https://www.youtube.com/embed/' + videoId + '?rel=0&autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
+        var video = iframe.childNodes[1];
+                // Replace the image with the video
+        event.target.parentNode.replaceChild(video, event.target);
+
+        // Enter fullscreen mode
+        // video.requestFullscreen();
+      }
+
+
+      }, false);
+
+      // var ul = getElementById('hi');
+  //     ul.addEventListener('click', function (event) {
+  //       console.log('hey');
+  //   //   }, false);
+  //   //   function playFullscreen (){
+  //   //   player.playVideo();//won't work on mobile
+  //   //
+  //   //   var requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen;
+  //   //   if (requestFullScreen) {
+  //   //     requestFullScreen.bind(iframe)();
+  //   //   }
+  //   // }
+  // // document.addEventListener('click', function (event) {
+  // //     var closeVideo = event.target.
+  // //     if (!closeVideo) {console.log('ji')}
+  // //     if (!closeVideo) return;
+  //   }, false);
+    </script>
+
+  </body>
+</html>

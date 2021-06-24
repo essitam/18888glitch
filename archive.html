@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/scroller.css">
+    <link rel="stylesheet" href="css/sidenav.css">
+  </head>
+  <body onload="openNav();">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="#" id="voicemail1">&#10175; voicemail 1</a>
+      <a href="#" id="voicemail2">&#10175; voicemail 2 </a>
+      <a href="#">&#10175; voicemail 3</a>
+      <a href="#">&#10175; voicemail 4</a>
+    </div>
+
+
+    <div class="gallery">
+      <ul id="card" class="cards">
+      </ul>
+      <div class="actions hideThis" id="actions">
+        <button class="prev button">Prev</button>
+        <button class="next button">Next</button><br>
+        <button type="button" name="button" onclick="exitVoicemail();">exit</button>
+        <button type="button" name="button" onClick=openNav()>Open</button>
+      </div>
+    </div>
+    <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+    <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+    <script type="text/javascript" src="js/ytfs.js"></script>
+    <script  src="js/scroller.js"></script>
+      <script>
+      function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+        // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft= "0";
+        // document.body.style.backgroundColor = "white";
+      }
+
+      document.getElementById("voicemail1").addEventListener("click", function(){beginThePage(voicemailArray, audioFileVoicemail);loadVoicemail();}, false)
+      document.getElementById("voicemail2").addEventListener("click", function(){beginThePage(voicemailArray2, audioFileVoicemail);loadVoicemail();}, false)
+
+
+      var voicemailArray = ["aaaaaaj","qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8", "qhVehcHwOB8"];
+      var voicemailArray2 = ["fhfhfhfh", "NJea386275c", "NJea386275c", "NJea386275c", "NJea386275c", "NJea386275c", "NJea386275c", "NJea386275c", "NJea386275c"];
+
+
+      var audioFileVoicemail = "01 Ephemeral U.mp3";
+      function beginThePage(voicemailArray, audioFileVoicemail){
+        var voicemail = voicemailArray;
+        let fLen = voicemail.length;
+        var cardi = document.getElementById('card');
+        cardi.innerHTML='';
+        for (let i = 0; i < fLen; i++) {
+          var li = document.createElement("li");
+          var p = document.createElement("p");
+          var img = document.createElement("img");
+          img.setAttribute('data-video', voicemail[i] );
+          img.setAttribute('alt', 'Play this video');
+          img.setAttribute('src', 'http://img.youtube.com/vi/'+ voicemail[i] +'/0.jpg')
+          p.appendChild(img);
+          li.appendChild(p);
+          cardi.appendChild(li);
+        }
+          var lii = document.createElement("li");
+          var aaa = document.createElement("a");
+          aaa.setAttribute('href', audioFileVoicemail);
+          aaa.setAttribute('download', 'download');
+          aaa.innerText="download this audio file";
+          lii.appendChild(aaa);
+          cardi.appendChild(lii);
+
+          var liii = document.createElement("li");
+          liii.innerHTML = "submit";
+          cardi.appendChild(liii);
+      }
+      </script>
+  </body>
+</html>

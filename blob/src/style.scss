@@ -1,0 +1,25 @@
+body, html { 
+  background: rgb(255, 255, 255); margin: 0;
+height: 200vh;}
+
+canvas { position: absolute; }
+
+.text {
+  position: absolute;
+  left: 40%;
+  top: 45%;
+  font-family: Roboto;
+  color: rgb(255,255,255);
+  user-select: none;
+}
+
+.text-light {
+  position: absolute;
+  left: 40%;
+  top: 45%;
+  font-family: Roboto;
+  color: rgb(255,0,0);
+  mix-blend-mode: difference;
+  z-index: 100;
+  user-select: none;
+}
