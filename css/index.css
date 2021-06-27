@@ -37,34 +37,16 @@
     -webkit-filter: drop-shadow(5px 5px 7px rgba(255, 255, 255, 0.5));
      filter: drop-shadow(5px 5px 7px rgba(255, 255, 255, 0.5));
 }
-  /* svg{
-    float:right;
-    position: absolute;
-    display:block;
-    vertical-align:top;
-    top:0;
-    left:0;
-    right:0;
-    margin:0;
-    margin-left:0;
-  } */
+
   .voicemail {
     color:black;
-    /* color: #D6FB38; */
-    /* border-radius: 25px; */
     padding:10px;
-    /* z-index: 20; */
-    /* top:20%;
-    left:20%;
-    right:20%; */
     text-align: center;
   }
-  #contentt{
-    /* bottom: 10%; */
-  }
+
   .content{
     position:fixed;
-    /* z-index:9; */
+    z-index:19;
     top: 20%;
     left: 20%;
     right:20%;
@@ -135,7 +117,6 @@
   }
   /* Place the navbar at the bottom of the page, and make it stick */
   .navbar {
-    /* background-color: #333; */
     overflow: hidden;
     position: fixed;
     bottom: 0;
@@ -202,4 +183,7 @@ z-index:8;
 }
 .showThis{
   display: block;
+}
+.menuItem{
+  color:white;
 }
