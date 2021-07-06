@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- <img id="startsound"  src="assets/phoneo.png" alt="" width="200px" onclick="changeImage();"> -->
+
+<script type="text/javascript">
+  function toggleImage() {
+     var img1 = "http://18888glitch.com/assets/phonec.png";
+     var img2 = "http://18888glitch.com/assets/phoneo.png";
+
+     var imgElement = document.getElementById('toggleImage');
+
+     imgElement.src = (imgElement.src === img1)? img2 : img1;
+  }
+</script>
+
+<img src="http://18888glitch.com/assets/phonec.png" id="toggleImage" onclick="toggleImage();"/>
+
+
+  </body>
+</html>

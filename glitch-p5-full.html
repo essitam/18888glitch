@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.glitch@latest/p5.glitch.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js" integrity="sha512-wM+t5MzLiNHl2fwT5rWSXr2JMeymTtixiw2lWyVk1JK/jDM4RBSFoH4J8LjucwlDdY6Mu84Kj0gPXp7rLGaDyA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/@free-side/audioworklet-polyfill/dist/audioworklet-polyfill.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript">
+    let glitch;
+      // let fr = 3;
+      let song, analyzer;
+      let ee=127;
+      // function preload() {
+      //   song = loadSound('01 Ephemeral U.mp3');
+      // }
+      function setup() {
+          getAudioContext().suspend();
+          let cnv = createCanvas(windowWidth, windowHeight);
+          cnv.mousePressed(canvasPressed);
+        	background(0);
+        	imageMode(CENTER);
+
+        	glitch = new Glitch();
+        	loadImage('logo-600.png', function(im){
+        		glitch.loadImage(im);
+        	});
+          // create a new Amplitude analyzer
+          // analyzer = new p5.Amplitude();
+          //
+          // // Patch the input to an volume analyzer
+          // analyzer.setInput(song);
+          // song.loop();
+      }
+      function draw() {
+        // frameRate(fr);
+        glitch.resetBytes();
+
+      	glitch.replaceBytes(100, ee); // swap all decimal byte 100 for 104
+      	glitch.randomBytes(1); // add one random byte for movement
+
+      	glitch.buildImage();
+      	image(glitch.image, width/2, height/2);
+          // let rms = analyzer.getLevel();
+          // console.log(rms);
+          // ee= rms*100;
+      }
+
+        // let rms = analyzer.getLevel();
+        // console.log(rms);
+        function canvasPressed() {
+        //   // ensure audio is enabled
+          userStartAudio();
+        //
+        //   // if (soundLoop.isPlaying) {
+        //   //   soundLoop.stop();
+        //   // } else {
+        //     // start the loop
+        //    song.play();
+        //   // }
+        }
+    </script>
+
+  </body>
+</html>
